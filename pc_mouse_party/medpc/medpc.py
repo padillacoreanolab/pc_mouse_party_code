@@ -642,9 +642,9 @@ def get_concatted_last_porty_entry_before_tone_dataframe(
                 last_port_entry_df[date_column] = current_file_df[date_column].unique()[0]
                 last_port_entry_df[subject_column] = current_file_df[subject_column].unique()[0]
             elif stop_with_error:
-                raise ValueError("More then one date or subject in {}".format(file_path))
+                raise ValueError(f"More then one date/subject in {file_path}")
             else:
-                print("More then one date or subject in {}".format(file_path))
+                print(f"More then one date/subject in {file_path}")
             all_last_port_entry_df.append(last_port_entry_df)
         elif valid_tones.empty and stop_with_error:
             raise ValueError("No valid tones for {}".format(file_path))
@@ -661,5 +661,3 @@ def get_info(filename):
         node_names = [n.decode() for n in f["node_names"][:]]
         track_names = [n.decode() for n in f["track_names"][:]]
     return dset_names, locations, node_names, track_names
-
-
